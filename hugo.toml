@@ -1,5 +1,5 @@
 # サイト全体の設定
-baseURL = "https://yuumu6885.github.io/github.io/"  # 公開時は自動で正しいURLに置き換わります
+baseURL = "https://yuumu6885.github.io/"  # 公開時は自動で正しいURLに置き換わります
 languageCode = "ja"
 defaultContentLanguage = "ja"
 title = "日記・備忘録"
