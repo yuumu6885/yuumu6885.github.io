@@ -1,0 +1,3 @@
+{{- $s := .Section -}}
+{{- if eq $s "diary" -}}<a class="cat cat-diary" href="{{ "/diary/" | relURL }}">日記</a>
+{{- else if eq $s "memo" -}}<a class="cat cat-memo" href="{{ "/memo/" | relURL }}">備忘録</a>{{- end -}}

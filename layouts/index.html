@@ -1,0 +1,7 @@
+{{ define "main" }}
+<p class="lead">{{ site.Params.description }}</p>
+{{ $pages := where site.RegularPages "Section" "in" (slice "diary" "memo") }}
+{{ $pager := .Paginate $pages }}
+{{ range $pager.Pages }}{{ partial "post-item.html" . }}{{ end }}
+{{ partial "pager.html" $pager }}
+{{ end }}

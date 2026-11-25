@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title | default (.Date.Format "2006年1月2日") }} | {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | truncate 120 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">{{ end }}
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+    <nav class="site-nav">
+      <a href="{{ "/diary/" | relURL }}">日記</a>
+      <a href="{{ "/memo/" | relURL }}">備忘録</a>
+      <a href="{{ "/tags/" | relURL }}">タグ</a>
+      <a href="{{ "/archive/" | relURL }}">アーカイブ</a>
+    </nav>
+  </header>
+  <main class="container">
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">
+    <p>&copy; {{ now.Year }} {{ site.Params.author }} · <a href="{{ "index.xml" | relURL }}">RSS</a></p>
+  </footer>
+</body>
+</html>

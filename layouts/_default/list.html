@@ -1,0 +1,6 @@
+{{ define "main" }}
+<h1 class="page-title">{{ if eq .Kind "term" }}#{{ end }}{{ .Title }}</h1>
+{{ $pager := .Paginate .Pages }}
+{{ range $pager.Pages }}{{ partial "post-item.html" . }}{{ else }}<p>まだ記事がありません。</p>{{ end }}
+{{ partial "pager.html" $pager }}
+{{ end }}

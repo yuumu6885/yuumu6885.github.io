@@ -1,0 +1,9 @@
+<article class="post-item">
+  <div class="meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
+    {{ partial "category.html" . }}
+  </div>
+  <h2><a href="{{ .RelPermalink }}">{{ .Title | default (.Date.Format "2006年1月2日") }}</a></h2>
+  <p class="summary">{{ .Summary | plainify | truncate 100 }}</p>
+  {{ partial "tags.html" . }}
+</article>

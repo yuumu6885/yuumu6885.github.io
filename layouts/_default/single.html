@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="post">
+  <div class="meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
+    {{ partial "category.html" . }}
+  </div>
+  <h1>{{ .Title | default (.Date.Format "2006年1月2日") }}</h1>
+  <div class="content">{{ .Content }}</div>
+  {{ partial "tags.html" . }}
+</article>
+<nav class="post-nav">
+  {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">← {{ .Title | default (.Date.Format "2006年1月2日") }}</a>{{ else }}<span></span>{{ end }}
+  {{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title | default (.Date.Format "2006年1月2日") }} →</a>{{ end }}
+</nav>
+{{ end }}

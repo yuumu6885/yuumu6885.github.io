@@ -1,0 +1,32 @@
+# サイト全体の設定
+baseURL = "https://example.github.io/"
+languageCode = "ja"
+defaultContentLanguage = "ja"
+title = "日記・備忘録"
+hasCJKLanguage = true          # 日本語の文字数・要約を正しく扱う
+summaryLength = 60
+enableRobotsTXT = true
+
+[params]
+  description = "日々の記録と、忘れたくないことのメモ。"
+  author = "yuu"
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  tag = "tags"
+
+# ファイル名の先頭の日付（例: 2026-11-25.md）を記事の日付として使う
+[frontmatter]
+  date = [":filename", ":default"]
+
+[permalinks]
+  [permalinks.page]
+    diary = "/diary/:filename/"
+    memo  = "/memo/:filename/"
+
+[markup.goldmark.renderer]
+  unsafe = true                 # Markdown 中の HTML（<details> など）を許可
+[markup.highlight]
+  style = "github"

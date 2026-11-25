@@ -1,0 +1,16 @@
+{{ define "main" }}
+<h1 class="page-title">月別アーカイブ</h1>
+{{ $pages := where site.RegularPages "Section" "in" (slice "diary" "memo") }}
+{{ $groups := $pages.GroupByDate "2006-01" }}
+<ul class="month-index">
+{{ range $groups }}{{ $d := (index .Pages 0).Date }}<li><a href="#m{{ .Key }}">{{ $d.Format "2006年1月" }}</a> <span>{{ len .Pages }}</span></li>{{ end }}
+</ul>
+{{ range $groups }}{{ $d := (index .Pages 0).Date }}
+<section class="month" id="m{{ .Key }}">
+  <h2>{{ $d.Format "2006年1月" }}</h2>
+  <ul>
+  {{ range .Pages }}<li><time>{{ .Date.Format "1/2" }}</time> {{ partial "category.html" . }} <a href="{{ .RelPermalink }}">{{ .Title | default (.Date.Format "2006年1月2日") }}</a></li>{{ end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}
